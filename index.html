@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Jenkins Demo Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+            margin: 1rem;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .build-info {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border-left: 4px solid #007bff;
+        }
+
+        .status {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .jenkins-logo {
+            width: 60px;
+            height: 60px;
+            background: #335061;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jenkins-logo">J</div>
+        <h1>Jenkins Demo Site</h1>
+        <p>Welcome to my first Jenkins automated deployment!</p>
+        
+        <div class="build-info">
+            <h3>Build Information</h3>
+            <p>Status: <span class="status">Successfully Deployed</span></p>
+            <p>Build #: <span id="build-number">1</span></p>
+            <p>Last Updated: <span id="timestamp"></span></p>
+        </div>
+        
+        <p>This website is automatically built and deployed using Jenkins whenever I push code to GitHub.</p>
+        
+        <div class="footer">
+            <p>Powered by Jenkins CI/CD Pipeline</p>
+        </div>
+    </div>
+
+    <script>
+        // Display current timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        
+        // Simple build number simulation (in real Jenkins, this would come from environment variables)
+        const buildNumber = Math.floor(Math.random() * 100) + 1;
+        document.getElementById('build-number').textContent = buildNumber;
+    </script>
+</body>
+</html>
