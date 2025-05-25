@@ -49,7 +49,7 @@ ls -la $DEPLOY_DIR
 
 # Vérifier que le fichier principal existe
 if [ -f "$DEPLOY_DIR/index.html" ]; then
-    echo "✅ Déploiement réussi ! Site accessible sur http://$(hostname -I | awk '{print $1}')/jenkins-demo"
+    echo "✅ Déploiement réussi ! Site accessible sur http://localhost/jenkins-demo"
 else
     echo "❌ Erreur : index.html non trouvé après déploiement"
     exit 1
