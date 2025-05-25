@@ -88,8 +88,10 @@
         <div class="build-info">
             <h3>Build Information</h3>
             <p>Status: <span class="status">Successfully Deployed</span></p>
-            <p>Build #: <span id="build-number">1</span></p>
-            <p>Last Updated: <span id="timestamp"></span></p>
+            <p>Build #: <span id="build-number">{{BUILD_NUMBER}}</span></p>
+            <p>Build ID: <span id="build-id">{{BUILD_ID}}</span></p>
+            <p>Git Commit: <span id="git-commit">{{GIT_COMMIT}}</span></p>
+            <p>Deployed: <span id="timestamp">{{BUILD_TIMESTAMP}}</span></p>
         </div>
         
         <p>This website is automatically built and deployed using Jenkins whenever I push code to GitHub.</p>
@@ -101,12 +103,8 @@
     </div>
 
     <script>
-        // Display current timestamp
-        document.getElementById('timestamp').textContent = new Date().toLocaleString();
-        
-        // Simple build number simulation (in real Jenkins, this would come from environment variables)
-        const buildNumber = 33;
-        document.getElementById('build-number').textContent = buildNumber;
+        // Les informations de build sont maintenant injectées par Jenkins
+        console.log('Site déployé automatiquement par Jenkins !');
     </script>
 </body>
 </html>

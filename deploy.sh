@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # Script de déploiement Jenkins Demo Site
-echo "=== Début du déploiement avec jenkins==="
+echo "=== Début du déploiement ==="
+echo "Variables Jenkins disponibles:"
+echo "BUILD_NUMBER: ${BUILD_NUMBER}"
+echo "BUILD_ID: ${BUILD_ID}"
+echo "BUILD_URL: ${BUILD_URL}"
+echo "JOB_NAME: ${JOB_NAME}"
+echo "GIT_COMMIT: ${GIT_COMMIT}"
+echo "GIT_BRANCH: ${GIT_BRANCH}"
 
 # Variables
 DEPLOY_DIR="/srv/http/jenkins-demo"
@@ -12,8 +19,20 @@ mkdir -p $DEPLOY_DIR
 
 echo "Déploiement des fichiers vers $DEPLOY_DIR"
 
-# Copier tous les fichiers HTML/CSS vers le serveur web
-cp *.html $DEPLOY_DIR/ 2>/dev/null || echo "Aucun fichier HTML trouvé"
+# Copier et modifier le fichier HTML avec les vraies infos Jenkins
+if [ -f "index.html" ]; then
+    # Remplacer les placeholders par les vraies valeurs Jenkins
+    sed "s/{{BUILD_NUMBER}}/${BUILD_NUMBER:-1}/g" index.html | \
+    sed "s/{{BUILD_ID}}/${BUILD_ID:-unknown}/g" | \
+    sed "s/{{BUILD_TIMESTAMP}}/$(date)/g" | \
+    sed "s/{{GIT_COMMIT}}/${GIT_COMMIT:-unknown}/g" > $DEPLOY_DIR/index.html
+    
+    echo "✅ HTML modifié avec les infos de build Jenkins"
+else
+    echo "❌ index.html non trouvé"
+fi
+
+# Copier les autres fichiers
 cp *.css $DEPLOY_DIR/ 2>/dev/null || echo "Aucun fichier CSS trouvé"
 cp *.js $DEPLOY_DIR/ 2>/dev/null || echo "Aucun fichier JS trouvé"
 
