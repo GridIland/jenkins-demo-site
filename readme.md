@@ -35,4 +35,7 @@ Quick steps I followed on my Arch Linux VM:
 
 ## Build History
 - v1.0: Initial website creation
-- Each Jenkins build will add a new entry here
+- v1.0: Initial website creation
+- v1.1: Added deployment script and Apache integration
+- v1.2: Added real Jenkins build variables display
+- each jenkins build will add an entry here
