@@ -1,13 +1,13 @@
 # Jenkins Demo Website
 
-A simple HTML/CSS website to demonstrate Jenkins CI/CD automation.
+A simple HTML/CSS website to demonstrate Jenkins CI/CD automation, i made it to explore freestyle projets mainly.
 
 ## Project Structure
 ```
 jenkins-demo-site/
 ├── index.html          # Main website file
 ├── README.md           # This file
-└── deploy.sh           # Deployment script (added later)
+└── deploy.sh           # Deployment script
 ```
 
 ## Features
