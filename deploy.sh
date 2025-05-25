@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script de déploiement Jenkins Demo Site
-echo "=== Début du déploiement ==="
+echo "=== Début du déploiement avec jenkins==="
 
 # Variables
 DEPLOY_DIR="/srv/http/jenkins-demo"
