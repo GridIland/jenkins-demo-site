@@ -13,6 +13,7 @@ echo "GIT_BRANCH: ${GIT_BRANCH}"
 # Variables
 DEPLOY_DIR="/srv/http/jenkins-demo"
 BUILD_INFO_FILE="$DEPLOY_DIR/build-info.txt"
+IP_ADDR=$(hostname -I | awk '{print $1}')
 
 # Créer le dossier de déploiement s'il n'existe pas
 mkdir -p $DEPLOY_DIR
@@ -49,7 +50,8 @@ ls -la $DEPLOY_DIR
 
 # Vérifier que le fichier principal existe
 if [ -f "$DEPLOY_DIR/index.html" ]; then
-    echo "✅ Déploiement réussi ! Site accessible sur http://localhost/jenkins-demo"
+    # echo the ip address
+    echo "✅ Déploiement réussi ! Site accessible sur http://$IP_ADDR/jenkins-demo"
 else
     echo "❌ Erreur : index.html non trouvé après déploiement"
     exit 1
