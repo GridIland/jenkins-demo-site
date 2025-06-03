@@ -13,7 +13,11 @@ echo "GIT_BRANCH: ${GIT_BRANCH}"
 # Variables
 DEPLOY_DIR="/srv/http/jenkins-demo"
 BUILD_INFO_FILE="$DEPLOY_DIR/build-info.txt"
-IP_ADDR=$(hostname -I | awk '{print $1}')
+IP_ADDR=$(ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | head -n 1)
+if [ -z "$IP_ADDR" ]; then
+    echo "Erreur : Adresse IP non trouvée"
+    exit 1
+fi
 
 # Créer le dossier de déploiement s'il n'existe pas
 mkdir -p $DEPLOY_DIR
